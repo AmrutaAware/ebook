@@ -33,11 +33,11 @@ class BookDetailPage extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               book['title']!,
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headlineLarge
             ),
             Text(
               'by ${book['author']}',
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.labelMedium,
             ),
             const SizedBox(height: 16),
             // Add more book details here as needed

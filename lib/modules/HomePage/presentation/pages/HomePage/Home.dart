@@ -1,3 +1,4 @@
+import 'package:ebook_app/modules/Drawer/presentation/views/drawerscreen.dart';
 import 'package:ebook_app/modules/HomePage/data/models/data.dart';
 import 'package:ebook_app/modules/HomePage/presentation/pages/HomePage/Allbooks.dart';
 import 'package:ebook_app/modules/HomePage/presentation/pages/HomePage/BookDetails.dart';
@@ -19,11 +20,13 @@ class _HomePageState extends State<HomePage> {
   bool isDarkMode = false;
   final TextEditingController _searchController = TextEditingController();
   var bookData = [
-    {"title": "Book 1", "author": "Author 1", "coverUrl": "https://example.com/book1.jpg"},
-    {"title": "Book 2", "author": "Author 2", "coverUrl": "https://example.com/book2.jpg"},
-    {"title": "Book 3", "author": "Author 3", "coverUrl": "https://example.com/book3.jpg"},
-    {"title": "Book 4", "author": "Author 4", "coverUrl": "https://example.com/book4.jpg"},
-    {"title": "Book 5", "author": "Author 5", "coverUrl": "https://example.com/book5.jpg"},
+    {"title": "Book 1", "author": "Author 1", "coverUrl": "assets/images/give.jpg"},
+    {"title": "Book 2", "author": "Author 2", "coverUrl": "assets/images/stories.jpg"},
+    {"title": "Book 3", "author": "Author 3", "coverUrl": "assets/images/truth.jpg"},
+    {"title": "Book 4", "author": "Author 4", "coverUrl": "assets/images/give.jpg"},
+    {"title": "Book 5", "author": "Author 5", "coverUrl": "assets/images/give.jpg"},
+     {"title": "Book 5", "author": "Author 6", "coverUrl": "assets/images/give.jpg"},
+      {"title": "Book 5", "author": "Author 7", "coverUrl": "assets/images/give.jpg"},
   ];
 
   void _toggleTheme() {
@@ -60,6 +63,7 @@ class _HomePageState extends State<HomePage> {
       darkTheme: ThemeData.dark(),
       theme: ThemeData.light(),
       home: Scaffold(
+      drawer: DrawerScreen(),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -173,10 +177,11 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(height: 10),
                     SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
+                     scrollDirection: Axis.horizontal,
                       child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          ...bookData.take(4).map((e) => BookCard(
+                          ...bookData.take(6).map((e) => BookCard(
                                 title: e["title"]!,
                                 author: e["author"]!,
                                 coverUrl: e["coverUrl"]!,
@@ -191,21 +196,21 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               );
                             },
-                            // child: Container(
-                            //   padding: const EdgeInsets.symmetric(
-                            //       horizontal: 10, vertical: 20),
-                            //   child: Text(
-                            //     "See More",
-                            //     style: Theme.of(context)
-                            //         .textTheme
-                            //         .bodyMedium
-                            //         ?.copyWith(
-                            //           color: Theme.of(context)
-                            //               .colorScheme
-                            //               .primary,
-                            //         ),
-                            //   ),
-                            // ),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 20),
+                              child: Text(
+                                "See More",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary,
+                                    ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -220,4 +225,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
